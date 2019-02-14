@@ -6,6 +6,7 @@ from django.http import JsonResponse
 
 # Create your views here.
 def item_list(request):
+	favorite_list=[]
 	items = Item.objects.all()
 	query = request.GET.get('q')
 	if query:
@@ -15,7 +16,7 @@ def item_list(request):
 	
 	context = {
 		"items":items,
-		"favorite_list": favorite_list,
+		"favorite_list": favorite_list
 		
 	}
 	return render(request, 'item_list.html', context)
